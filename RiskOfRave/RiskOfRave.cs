@@ -160,6 +160,7 @@ namespace RuneFoxMods
       RaveTintRect.anchoredPosition = Vector2.zero;
       RaveTintImg = RaveTint.AddComponent<Image>();
       RaveTintImg.color = new Color(1, 1, 1, 0f);
+      RaveTintImg.raycastTarget = false;
     }
 
     public float lastBeat = 0;
