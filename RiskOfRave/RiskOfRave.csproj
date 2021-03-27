@@ -19,9 +19,6 @@
     <Reference Include="Assembly-CSharp">
       <HintPath>G:\Steam\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
-    <Reference Include="Assembly-CSharp.R2API.mm">
-      <HintPath>G:\Steam\steamapps\common\Risk of Rain 2\BepInEx\monomod\Assembly-CSharp.R2API.mm.dll</HintPath>
-    </Reference>
     <Reference Include="BepInEx">
       <HintPath>G:\Steam\steamapps\common\Risk of Rain 2\BepInEx\core\BepInEx.dll</HintPath>
     </Reference>
@@ -35,7 +32,7 @@
       <HintPath>G:\Steam\steamapps\common\Risk of Rain 2\BepInEx\core\BepInEx.Preloader.dll</HintPath>
     </Reference>
     <Reference Include="MMHOOK_Assembly-CSharp">
-      <HintPath>G:\Steam\steamapps\common\Risk of Rain 2\BepInEx\plugins\R2API\MMHOOK_Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\..\..\..\Other\MMHOOK_Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>G:\Steam\steamapps\common\Risk of Rain 2\BepInEx\core\Mono.Cecil.dll</HintPath>
@@ -54,9 +51,6 @@
     </Reference>
     <Reference Include="MonoMod.Utils">
       <HintPath>G:\Steam\steamapps\common\Risk of Rain 2\BepInEx\core\MonoMod.Utils.dll</HintPath>
-    </Reference>
-    <Reference Include="R2API">
-      <HintPath>G:\Steam\steamapps\common\Risk of Rain 2\BepInEx\plugins\R2API\R2API.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
       <HintPath>G:\Steam\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\UnityEngine.dll</HintPath>

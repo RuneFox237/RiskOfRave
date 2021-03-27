@@ -1,18 +1,19 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
 using RoR2;
-using R2API;
-using R2API.Utils;
+//using R2API;
+//using R2API.Utils;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Runtime.InteropServices; //marshall
 using System.Collections.ObjectModel;
 using UnityEngine;
 using UnityEngine.UI;
 using On.RoR2;
 using On.RoR2.UI;
 using RoR2.UI;
-using static R2API.SoundAPI;
+//using static R2API.SoundAPI;
 using System.Reflection;
 
 
@@ -29,10 +30,10 @@ using System.Reflection;
 
 namespace RuneFoxMods
 {
-  [BepInDependency("com.bepis.r2api")]
+//  [BepInDependency("com.bepis.r2api")]
   //Change these
-  [BepInPlugin("com.RuneFoxMods.RiskOfRave", "RiskOfRave", "0.0.1")]
-  [R2APISubmoduleDependency("SoundAPI")]
+  [BepInPlugin("com.RuneFoxMods.RiskOfRave", "RiskOfRave", "1.0.3")]
+//  [R2APISubmoduleDependency("SoundAPI")]
   public class RiskOfRave : BaseUnityPlugin
   {
     public class Conductor
@@ -75,6 +76,13 @@ namespace RuneFoxMods
     RoR2.HoldoutZoneController Hodl;
     RoR2.UI.ObjectivePanelController.ObjectiveTracker HodlTracker;
 
+    /////////////////////////////////////////
+    //Custom version
+    byte[] bytes;
+    //Custom version
+    /////////////////////////////////////////
+
+    uint BankID; //used for the non-R2API version
     public void Awake()
     {
       //      Debug.Log("TestModLoaded");
@@ -83,15 +91,26 @@ namespace RuneFoxMods
       //load the rave music into sound banks
       using (var bankStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("RiskOfRave.Rave.bnk"))
       {
-        var bytes = new byte[bankStream.Length];
+        //////////////////////////////////////////
+        //R2API version
+        //var bytes = new byte[bankStream.Length];
+        //bankStream.Read(bytes, 0, bytes.Length);
+        //SoundBanks.Add(bytes);
+        //R2API version
+        //////////////////////////////////////////
+
+
+        /////////////////////////////////////////
+        //Custom version
+        bytes = new byte[bankStream.Length];
         bankStream.Read(bytes, 0, bytes.Length);
-      
-        SoundBanks.Add(bytes);
+        //Ccustom version
+        /////////////////////////////////////////
       }
 
-//      Debug.Log("TestModLoaded2");
+      //      Debug.Log("TestModLoaded2");
 
-      
+
 
       //On.RoR2.HoldoutZoneController.Start += StartRave;
       //On.RoR2.HoldoutZoneController.FullyChargeHoldoutZone += EndRaveChargedHoldout;
@@ -99,6 +118,12 @@ namespace RuneFoxMods
       On.RoR2.HoldoutZoneController.OnDisable += EndRaveTest;
       //On.RoR2.UI.ObjectivePanelController.FinishTeleporterObjectiveTracker.ctor += EndRaveChargedTele;
       On.RoR2.GameOverController.SetRunReport += EndRaveDeath;
+      
+      /////////////////////////////////////////
+      //Custom version
+      On.RoR2.RoR2Application.OnLoad += OnLoad;
+      //Custom version
+      /////////////////////////////////////////
 
 
       On.RoR2.UI.HUD.Awake += RaveUI;
@@ -134,6 +159,29 @@ namespace RuneFoxMods
       //TODO: create a prefab of a image that is scaled across the entire screen and load it in
     }
 
+
+    /////////////////////////////////////////
+    //Custom version
+    private void OnLoad(On.RoR2.RoR2Application.orig_OnLoad orig, RoR2.RoR2Application self)
+    {
+      orig(self);
+
+      //Creates IntPtr of sufficient size.
+      IntPtr Memory = Marshal.AllocHGlobal(bytes.Length);
+      //copies the byte array to the IntPtr
+      Marshal.Copy(bytes, 0, Memory, bytes.Length);
+
+      //Loads the entire IntPtr as a bank
+      var result = AkSoundEngine.LoadBank(Memory, (uint)bytes.Length, out BankID);
+      if (result != AKRESULT.AK_Success)
+      {
+        Debug.LogError("Risk of Rave SoundBank failed to to load with result " + result);
+      }
+    }
+    //Custom version
+    /////////////////////////////////////////
+
+
     private void EndRaveTest(On.RoR2.HoldoutZoneController.orig_OnDisable orig, RoR2.HoldoutZoneController self)
     {
       EndRave();
@@ -155,8 +203,28 @@ namespace RuneFoxMods
       RaveTint.name = "RaveTint";
       RaveTintRect = RaveTint.AddComponent<RectTransform>();
       RaveTintRect.parent = self.mainContainer.transform;
+
+      //var test1 = self.mainUIPanel.GetComponent<RectTransform>();
+      //var test2 = self.mainContainer.GetComponent<RectTransform>();
+      //var test3 = self.transform.GetComponent<RectTransform>();
+      //if (test1)
+      //{
+      //  Debug.Log("MainPannel height: " + test1.rect.height + "  width: " + test1.rect.width);
+      //}
+      //if (test2)
+      //{
+      //  Debug.Log("Maincontainter height: " + test2.rect.height + "  width: " + test2.rect.width);
+      //}
+      //if (test3)
+      //{
+      //  Debug.Log("Maincontainter height: " + test3.rect.height + "  width: " + test3.rect.width);
+      //}
+      //Screen.width;
+
       RaveTintRect.anchorMax = Vector2.one;
       RaveTintRect.anchorMin = Vector2.zero;
+      //RaveTintRect..width = Screen.width;
+      RaveTintRect.localScale = new Vector3(10, 10, 10);
       RaveTintRect.anchoredPosition = Vector2.zero;
       RaveTintImg = RaveTint.AddComponent<Image>();
       RaveTintImg.color = new Color(1, 1, 1, 0f);
