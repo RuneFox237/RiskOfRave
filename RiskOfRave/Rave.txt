@@ -7,5 +7,5 @@ Game Parameter	ID	Name			Wwise Object Path	Notes
 	1088585942	InNOut			\Default Work Unit\InNOut	In is 0, Out is 1
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	124772758	Caramelldansen_Speedcake_Remix_Extended	C:\Users\kamba\Documents\WwiseProjects\RiskOfRave\.cache\Windows\SFX\Caramelldansen_Speedcake_Remix_Extended_CB1F3167.wem		\Actor-Mixer Hierarchy\Default Work Unit\Rave\Caramelldansen_Speedcake_Remix_Extended		4952003
+	124772758	Caramelldansen_Speedcake_Remix_Extended	C:\Users\kamba\Documents\WwiseProjects\RiskOfRave\.cache\Windows\SFX\Caramelldansen_Speedcake_Remix_Extended_78160227.wem		\Actor-Mixer Hierarchy\Default Work Unit\Rave\Caramelldansen_Speedcake_Remix_Extended		4981450
 

@@ -1,8 +1,8 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
 using RoR2;
-//using R2API;
-//using R2API.Utils;
+using R2API;
+using R2API.Utils;
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -10,11 +10,11 @@ using System.Runtime.InteropServices; //marshall
 using System.Collections.ObjectModel;
 using UnityEngine;
 using UnityEngine.UI;
-using On.RoR2;
-using On.RoR2.UI;
 using RoR2.UI;
-//using static R2API.SoundAPI;
+using static R2API.SoundAPI;
 using System.Reflection;
+using On.RoR2;
+using System.Collections;
 
 
 /* TODO:
@@ -30,12 +30,17 @@ using System.Reflection;
 
 namespace RuneFoxMods
 {
-//  [BepInDependency("com.bepis.r2api")]
+  [BepInDependency("com.bepis.r2api")] //tristanmcpherson-R2API-3.0.25
   //Change these
-  [BepInPlugin("com.RuneFoxMods.RiskOfRave", "RiskOfRave", "1.0.3")]
-//  [R2APISubmoduleDependency("SoundAPI")]
+  [BepInPlugin(Mod_GUID, Mod_Name, Mod_Version)]
+  [R2APISubmoduleDependency("SoundAPI")]
   public class RiskOfRave : BaseUnityPlugin
   {
+    //BepIn plugin metadata
+    public const string Mod_GUID = "com.RuneFoxMods.RiskOfRave";
+    public const string Mod_Name = "RiskOfRave";
+    public const string Mod_Version = "1.0.6";
+
     public class Conductor
     {
       public float bpm = 165; //bpm of the song
@@ -75,16 +80,20 @@ namespace RuneFoxMods
     RoR2.MusicController MusicCon = null;
     RoR2.HoldoutZoneController Hodl;
     RoR2.UI.ObjectivePanelController.ObjectiveTracker HodlTracker;
-
+    
     /////////////////////////////////////////
     //Custom version
-    byte[] bytes;
+
+//    byte[] bytes;
+    
     //Custom version
     /////////////////////////////////////////
 
     uint BankID; //used for the non-R2API version
     public void Awake()
     {
+      RoR2.RoR2Application.isModded = true;
+
       //      Debug.Log("TestModLoaded");
       Volume = Config.Bind<int>("Config", "Volume", 100, "How loud the music will be on a scale from 0-100");
 
@@ -93,17 +102,20 @@ namespace RuneFoxMods
       {
         //////////////////////////////////////////
         //R2API version
-        //var bytes = new byte[bankStream.Length];
-        //bankStream.Read(bytes, 0, bytes.Length);
-        //SoundBanks.Add(bytes);
+        
+        var bytes = new byte[bankStream.Length];
+        bankStream.Read(bytes, 0, bytes.Length);
+        SoundBanks.Add(bytes);
+        
         //R2API version
         //////////////////////////////////////////
 
 
         /////////////////////////////////////////
         //Custom version
-        bytes = new byte[bankStream.Length];
-        bankStream.Read(bytes, 0, bytes.Length);
+//        bytes = new byte[bankStream.Length];
+//        bankStream.Read(bytes, 0, bytes.Length);
+//        Debug.Log("bytes lenght: " + bytes.Length);
         //Ccustom version
         /////////////////////////////////////////
       }
@@ -111,7 +123,7 @@ namespace RuneFoxMods
       //      Debug.Log("TestModLoaded2");
 
 
-
+      
       //On.RoR2.HoldoutZoneController.Start += StartRave;
       //On.RoR2.HoldoutZoneController.FullyChargeHoldoutZone += EndRaveChargedHoldout;
       On.RoR2.HoldoutZoneController.OnEnable += StartRaveTest;
@@ -121,10 +133,9 @@ namespace RuneFoxMods
       
       /////////////////////////////////////////
       //Custom version
-      On.RoR2.RoR2Application.OnLoad += OnLoad;
+//      On.RoR2.RoR2Application.OnLoad += OnLoad;
       //Custom version
       /////////////////////////////////////////
-
 
       On.RoR2.UI.HUD.Awake += RaveUI;
       //On.RoR2.TeleporterInteraction.OnInteractionBegin += StartConductor;
@@ -162,22 +173,25 @@ namespace RuneFoxMods
 
     /////////////////////////////////////////
     //Custom version
-    private void OnLoad(On.RoR2.RoR2Application.orig_OnLoad orig, RoR2.RoR2Application self)
-    {
-      orig(self);
-
-      //Creates IntPtr of sufficient size.
-      IntPtr Memory = Marshal.AllocHGlobal(bytes.Length);
-      //copies the byte array to the IntPtr
-      Marshal.Copy(bytes, 0, Memory, bytes.Length);
-
-      //Loads the entire IntPtr as a bank
-      var result = AkSoundEngine.LoadBank(Memory, (uint)bytes.Length, out BankID);
-      if (result != AKRESULT.AK_Success)
-      {
-        Debug.LogError("Risk of Rave SoundBank failed to to load with result " + result);
-      }
-    }
+//    private IEnumerator OnLoad(On.RoR2.RoR2Application.orig_OnLoad orig, RoR2.RoR2Application self)
+//    {
+//      IEnumerator num = orig(self);
+//
+//      //Creates IntPtr of sufficient size.
+//      IntPtr Memory = Marshal.AllocHGlobal(bytes.Length);
+//      //copies the byte array to the IntPtr
+//      Marshal.Copy(bytes, 0, Memory, bytes.Length);
+//
+//      //Loads the entire IntPtr as a bank
+//      var result = AkSoundEngine.LoadBank(Memory, (uint)bytes.Length, out BankID);
+//      if (result != AKRESULT.AK_Success)
+//      {
+//        Debug.LogError("Risk of Rave SoundBank failed to to load with result " + result);
+//      }
+//
+//      //num.MoveNext();
+//      return num;
+//    }
     //Custom version
     /////////////////////////////////////////
 

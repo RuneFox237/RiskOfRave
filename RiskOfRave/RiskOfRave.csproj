@@ -14,58 +14,70 @@
 
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>G:\Steam\steamapps\common\Risk of Rain 2\BepInEx\core\0Harmony.dll</HintPath>
+      <HintPath>..\..\..\..\..\bbepis-BepInExPack-5.4.1902\BepInExPack\BepInEx\core\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="0Harmony20">
+      <HintPath>..\..\..\..\..\bbepis-BepInExPack-5.4.1902\BepInExPack\BepInEx\core\0Harmony20.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>G:\Steam\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>D:\Games\Steam\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx">
-      <HintPath>G:\Steam\steamapps\common\Risk of Rain 2\BepInEx\core\BepInEx.dll</HintPath>
+      <HintPath>..\..\..\..\..\ModDownloads2022\bbepis-BepInExPack-5.4.1902\BepInExPack\BepInEx\core\BepInEx.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx.Harmony">
-      <HintPath>G:\Steam\steamapps\common\Risk of Rain 2\BepInEx\core\BepInEx.Harmony.dll</HintPath>
+      <HintPath>..\..\..\..\..\ModDownloads2022\bbepis-BepInExPack-5.4.1902\BepInExPack\BepInEx\core\BepInEx.Harmony.dll</HintPath>
     </Reference>
-    <Reference Include="BepInEx.MonoMod.Loader">
-      <HintPath>G:\Steam\steamapps\common\Risk of Rain 2\BepInEx\patchers\BepInEx.MonoMod.Loader\BepInEx.MonoMod.Loader.dll</HintPath>
+    <Reference Include="com.unity.multiplayer-hlapi.Runtime">
+      <HintPath>D:\Games\Steam\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="BepInEx.Preloader">
-      <HintPath>G:\Steam\steamapps\common\Risk of Rain 2\BepInEx\core\BepInEx.Preloader.dll</HintPath>
+    <Reference Include="HarmonyXInterop">
+      <HintPath>..\..\..\..\..\bbepis-BepInExPack-5.4.1902\BepInExPack\BepInEx\core\HarmonyXInterop.dll</HintPath>
     </Reference>
-    <Reference Include="MMHOOK_Assembly-CSharp">
-      <HintPath>..\..\..\..\..\Other\MMHOOK_Assembly-CSharp.dll</HintPath>
+    <Reference Include="MMHOOK_RoR2">
+      <HintPath>..\..\..\..\..\MMHOOK_RoR2.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil">
-      <HintPath>G:\Steam\steamapps\common\Risk of Rain 2\BepInEx\core\Mono.Cecil.dll</HintPath>
+      <HintPath>..\..\..\..\..\bbepis-BepInExPack-5.4.1902\BepInExPack\BepInEx\core\Mono.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil.Mdb">
-      <HintPath>G:\Steam\steamapps\common\Risk of Rain 2\BepInEx\core\Mono.Cecil.Mdb.dll</HintPath>
+      <HintPath>..\..\..\..\..\bbepis-BepInExPack-5.4.1902\BepInExPack\BepInEx\core\Mono.Cecil.Mdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil.Pdb">
-      <HintPath>G:\Steam\steamapps\common\Risk of Rain 2\BepInEx\core\Mono.Cecil.Pdb.dll</HintPath>
+      <HintPath>..\..\..\..\..\bbepis-BepInExPack-5.4.1902\BepInExPack\BepInEx\core\Mono.Cecil.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil.Rocks">
-      <HintPath>G:\Steam\steamapps\common\Risk of Rain 2\BepInEx\core\Mono.Cecil.Rocks.dll</HintPath>
+      <HintPath>..\..\..\..\..\bbepis-BepInExPack-5.4.1902\BepInExPack\BepInEx\core\Mono.Cecil.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="MonoMod.RuntimeDetour">
-      <HintPath>G:\Steam\steamapps\common\Risk of Rain 2\BepInEx\core\MonoMod.RuntimeDetour.dll</HintPath>
+      <HintPath>..\..\..\..\..\bbepis-BepInExPack-5.4.1902\BepInExPack\BepInEx\core\MonoMod.RuntimeDetour.dll</HintPath>
     </Reference>
     <Reference Include="MonoMod.Utils">
-      <HintPath>G:\Steam\steamapps\common\Risk of Rain 2\BepInEx\core\MonoMod.Utils.dll</HintPath>
+      <HintPath>..\..\..\..\..\bbepis-BepInExPack-5.4.1902\BepInExPack\BepInEx\core\MonoMod.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="R2API">
+      <HintPath>..\..\..\..\..\ModDownloads2022\tristanmcpherson-R2API-4.0.11\plugins\R2API\R2API.dll</HintPath>
+    </Reference>
+    <Reference Include="RoR2">
+      <HintPath>D:\Games\Steam\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\RoR2.dll</HintPath>
+    </Reference>
+    <Reference Include="RoR2BepInExPack">
+      <HintPath>..\..\..\..\..\ModDownloads2022\bbepis-BepInExPack-5.4.1902\BepInExPack\BepInEx\plugins\RoR2BepInExPack\RoR2BepInExPack.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>G:\Steam\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>D:\Games\Steam\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>G:\Steam\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>D:\Games\Steam\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>G:\Steam\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\UnityEngine.Networking.dll</HintPath>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>D:\Games\Steam\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>G:\Steam\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <HintPath>D:\Games\Steam\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Wwise">
-      <HintPath>G:\Steam\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\Wwise.dll</HintPath>
+      <HintPath>D:\Games\Steam\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\Wwise.dll</HintPath>
     </Reference>
   </ItemGroup>
 
